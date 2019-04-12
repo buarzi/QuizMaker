@@ -1,16 +1,12 @@
 package buarzi.quizmaker;
 
 import functions.QuizMaker;
-import questions.Dificullty;
+import questions.Difficulty;
 import questions.Question;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.Period;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -103,12 +99,13 @@ public class MainWindow {
         numberOfCorrectAnswers = 0;
         numberOfWrongAnswers = 0;
         stats = 0.0;
+        quizSize = questions.size();
 
         setCorrectAnswersField();
         setWrongAnswersField();
         setStatisticsField();
 
-        for(JButton button : answerButtons) {
+        for (JButton button : answerButtons) {
             button.setEnabled(true);
         }
     }
@@ -121,31 +118,31 @@ public class MainWindow {
 
         //Create a quiz
         QuizMaker quizMaker = new QuizMaker();
-        questions = quizMaker.getQuestionList(Dificullty.ALL);
+        questions = quizMaker.getQuestionList(Difficulty.ALL);
         quizSize = quizMaker.getQuizSize();
 
-        //Add an action listener for reset button (and init afer)
+        //Add an action listener for reset button (and init after)
         restartButton.addActionListener(e -> {
             String difficullty = (String) difficultyComboBox.getSelectedItem();
             if (difficullty != null) {
                 switch (difficullty) {
                     case "Easy":
-                        questions = questions = quizMaker.getQuestionList(Dificullty.EASY);
+                        questions = quizMaker.getQuestionList(Difficulty.EASY);
                         initAfterReset();
                         nextQuestion();
                         break;
                     case "Medium":
-                        questions = questions = quizMaker.getQuestionList(Dificullty.MEDIUM);
+                        questions = quizMaker.getQuestionList(Difficulty.MEDIUM);
                         initAfterReset();
                         nextQuestion();
                         break;
                     case "Hard":
-                        questions = questions = quizMaker.getQuestionList(Dificullty.HARD);
+                        questions = quizMaker.getQuestionList(Difficulty.HARD);
                         initAfterReset();
                         nextQuestion();
                         break;
                     case "":
-                        questions = questions = quizMaker.getQuestionList(Dificullty.ALL);
+                        questions = quizMaker.getQuestionList(Difficulty.ALL);
                         initAfterReset();
                         nextQuestion();
                         break;

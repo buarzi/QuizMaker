@@ -1,18 +1,16 @@
 package questions;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 public class Question {
     private String text;
     private Answers answers;
-    private Dificullty dificullty;
+    private Difficulty difficulty;
 
-    public Question(String text, Answers answers, Dificullty dificullty) {
+    public Question(String text, Answers answers, Difficulty difficulty) {
         this.text = text;
         this.answers = answers;
-        this.dificullty = dificullty;
+        this.difficulty = difficulty;
     }
 
     public String getQuestionText() {
@@ -31,11 +29,11 @@ public class Question {
         this.answers = answers;
     }
 
-    public Dificullty getDificullty() {
-        return dificullty;
+    public Difficulty getDifficulty() {
+        return difficulty;
     }
 
-    public void setDificullty(Dificullty dificullty) {
-        this.dificullty = dificullty;
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 }
